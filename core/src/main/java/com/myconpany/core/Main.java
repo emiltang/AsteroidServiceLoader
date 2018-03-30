@@ -8,7 +8,6 @@ package com.myconpany.core;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-
 /**
  *
  * @author Emil
@@ -21,6 +20,7 @@ public class Main {
         cfg.useGL30 = false;
         cfg.width = 480;
         cfg.height = 320;
+        cfg.resizable = false;
 
         LwjglApplication lwjglApplication = new LwjglApplication(new Asteroids(), cfg);
     }
