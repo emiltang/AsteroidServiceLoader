@@ -16,6 +16,8 @@
         <module>core</module>
         <module>library</module>
         <module>player</module>
+        <module>api</module>
+        <module>asteroid</module>
     </modules>
     <name>asteroids</name>
     <build>

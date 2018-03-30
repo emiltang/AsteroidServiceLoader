@@ -8,13 +8,18 @@ package com.mycompany.api;
 import java.util.List;
 
 /**
- *
  * @author Emil
  */
 public interface IWorld {
 
-    List<IEntity> getEntites();
+    float HEIGHT = 800;
+    float WIDTH = 800;
+
+    List<IEntity> getEntities();
+
+    <E extends IEntity> List<E> getEntities(Class<E> type);
 
     void addEntity(IEntity entity);
 
+    <E extends IEntity> void removeEntities(List<E> entities);
 }

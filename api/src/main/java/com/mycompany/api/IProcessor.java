@@ -11,5 +11,5 @@ package com.mycompany.api;
  */
 public interface IProcessor {
 
-    void Process();
+    void process(float dt);
 }

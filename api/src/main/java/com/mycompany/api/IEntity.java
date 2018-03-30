@@ -6,7 +6,6 @@
 package com.mycompany.api;
 
 /**
- *
  * @author Emil
  */
 public interface IEntity {
@@ -15,6 +14,14 @@ public interface IEntity {
 
     float getX();
 
+    void setX(float x);
+
     float getY();
+
+    void setY(float y);
+
+    float getRotation();
+
+    void setRotation(float v);
 
 }

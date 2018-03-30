@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * @author Emil
  */
 public class AssetManager implements IAssetManager {
@@ -30,7 +29,11 @@ public class AssetManager implements IAssetManager {
 
     @Override
     public void unloadAsset(String key) {
+        ASSETS.get(key).dispose();
         ASSETS.remove(key);
     }
 
+    void dispose() {
+        ASSETS.values().forEach(Texture::dispose);
+    }
 }
