@@ -1,36 +1,29 @@
-package com.myconpany.core;
+package com.mycompany.core;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mycompany.api.*;
+import com.mycompany.api.IPlugin;
+import com.mycompany.api.IProcessor;
+import com.mycompany.api.IWorld;
 import com.mycompany.library.ServiceProvider;
-import java.net.URL;
-import java.net.URLClassLoader;
+
 import java.util.List;
 
 public class Asteroids implements ApplicationListener {
 
+    private final AssetManager assetManager = new AssetManager();
     private IWorld world;
     private SpriteBatch batch;
-    private final AssetManager assetManager = new AssetManager();
 
     @Override
     public void create() {
 
-        ClassLoader cl = ClassLoader.getSystemClassLoader();
-
-        URL[] urls = ((URLClassLoader) cl).getURLs();
-
-        for (URL url : urls) {
-            System.out.println(url.getFile());
-        }
-
         System.out.println("Starting game");
 
-        for (IPlugin p : ServiceProvider.getServices(IPlugin.class)) {
+        for (var p : ServiceProvider.getServices(IPlugin.class)) {
             System.out.println(p);
             p.start();
         }

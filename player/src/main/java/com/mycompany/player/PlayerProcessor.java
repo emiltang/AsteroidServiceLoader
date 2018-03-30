@@ -8,13 +8,13 @@ package com.mycompany.player;
 import com.mycompany.api.IProcessor;
 
 /**
- *
  * @author Emil
  */
-public class PlayerProcessor implements IProcessor{
+public class PlayerProcessor implements IProcessor {
 
     @Override
     public void Process() {
-        System.out.println("processing players");    }
-    
+
+    }
+
 }

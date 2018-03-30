@@ -11,10 +11,11 @@ import com.mycompany.api.IWorld;
 import com.mycompany.library.ServiceProvider;
 
 /**
- *
  * @author Emil
  */
 public class PlayerPlugin implements IPlugin {
+
+    private static String PLAYER_ASSET = "asteroid";
 
     private IAssetManager assetManager;
     private IWorld world;
@@ -25,15 +26,14 @@ public class PlayerPlugin implements IPlugin {
         world = ServiceProvider.getService(IWorld.class);
         assetManager = ServiceProvider.getService(IAssetManager.class);
 
-        System.out.println(getClass().getResource("asteroid.png"));
-        assetManager.loadAsset("asteroid", getClass().getResource("asteroid.png").toString());
+        assetManager.loadAsset("asteroid", "asteroid.png");
 
-        world.addEntity(new Player("asteroid", 100, 100));
+        world.addEntity(new Player(PLAYER_ASSET, 100, 100));
     }
 
     @Override
     public void stop() {
-
+        assetManager.unloadAsset(PLAYER_ASSET);
     }
 
 }

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.myconpany.core;
+package com.mycompany.core;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mycompany.api.IAssetManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
