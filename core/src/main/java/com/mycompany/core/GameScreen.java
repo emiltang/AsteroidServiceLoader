@@ -7,11 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mycompany.api.IEntity;
-import com.mycompany.api.IPlugin;
-import com.mycompany.api.IProcessor;
-import com.mycompany.api.IWorld;
-import com.mycompany.library.ServiceLocator;
+import com.mycompany.api.*;
 
 import static com.badlogic.gdx.math.MathUtils.radDeg;
 

@@ -19,6 +19,11 @@
     <dependencies>
         <dependency>
             <groupId>com.mycompany</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mycompany</groupId>
             <artifactId>library</artifactId>
             <version>${project.version}</version>
         </dependency>

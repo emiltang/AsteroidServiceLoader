@@ -9,7 +9,7 @@ import com.mycompany.api.IInputService;
 import com.mycompany.api.IInputService.Key;
 import com.mycompany.api.IProcessor;
 import com.mycompany.api.IWorld;
-import com.mycompany.library.ServiceLocator;
+import com.mycompany.api.ServiceLocator;
 
 /**
  * @author Emil

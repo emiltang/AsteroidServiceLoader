@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.library;
+package com.mycompany.api;
 
 import java.util.List;
 
@@ -14,14 +14,13 @@ import static java.util.stream.Collectors.toList;
 /**
  * @author Emil
  */
-public class ServiceLocator {
+public interface ServiceLocator {
 
-    public static <E> E getService(Class<E> service) {
-        return load(service).findFirst()
-                .orElse(null);
+    static <E> E getService(Class<E> service) {
+        return load(service).findFirst().orElseThrow();
     }
 
-    public static <E> List<E> getServices(Class<E> service) {
+    static <E> List<E> getServices(Class<E> service) {
         return load(service).stream()
                 .map(Provider::get)
                 .collect(toList());

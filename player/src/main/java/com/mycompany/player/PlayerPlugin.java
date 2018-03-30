@@ -8,7 +8,7 @@ package com.mycompany.player;
 import com.mycompany.api.IAssetManager;
 import com.mycompany.api.IPlugin;
 import com.mycompany.api.IWorld;
-import com.mycompany.library.ServiceLocator;
+import com.mycompany.api.ServiceLocator;
 
 /**
  * @author Emil

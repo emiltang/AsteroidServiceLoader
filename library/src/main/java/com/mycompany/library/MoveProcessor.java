@@ -3,6 +3,7 @@ package com.mycompany.library;
 import com.mycompany.api.IMoveAble;
 import com.mycompany.api.IProcessor;
 import com.mycompany.api.IWorld;
+import com.mycompany.api.ServiceLocator;
 
 import static java.lang.Math.*;
 
