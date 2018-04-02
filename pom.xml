@@ -27,6 +27,8 @@
         <module>api</module>
         <module>asteroid</module>
         <module>enemy</module>
+        <module>collision</module>
+        <module>projectile</module>
     </modules>
     <name>asteroids</name>
     <build>

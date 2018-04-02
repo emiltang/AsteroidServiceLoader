@@ -7,10 +7,10 @@
  */
 package com.mycompany.api;
 
-
 /**
- * @author Emil
+ * @author emil
  */
-public interface IMoveAble extends IEntity {
-    IMoveAbility getMoveAbility();
+public interface ICollideAble extends IEntity {
+
+    ICollisionAbility getCollisionAbility();
 }

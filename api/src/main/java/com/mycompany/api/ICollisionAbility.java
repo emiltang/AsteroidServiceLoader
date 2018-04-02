@@ -5,12 +5,19 @@
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
+
 package com.mycompany.api;
 
+import java.util.Collection;
 
-/**
- * @author Emil
- */
-public interface IMoveAble extends IEntity {
-    IMoveAbility getMoveAbility();
+public interface ICollisionAbility {
+    int getHitRadius();
+
+    int getDamage();
+
+    void addCollision(ICollideAble entity);
+
+    Collection<ICollideAble> getCollisions();
+
+    void clearCollisions();
 }

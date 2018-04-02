@@ -14,9 +14,9 @@
         <groupId>com.mycompany</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>asteroid</artifactId>
+    <packaging>jar</packaging>
+    <artifactId>collision</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>10</maven.compiler.source>
@@ -27,12 +27,6 @@
             <groupId>com.mycompany</groupId>
             <artifactId>api</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mycompany</groupId>
-            <artifactId>library</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

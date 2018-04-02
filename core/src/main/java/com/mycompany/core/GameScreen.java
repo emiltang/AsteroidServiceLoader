@@ -9,6 +9,7 @@ package com.mycompany.core;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,6 +32,7 @@ public class GameScreen implements Screen {
     private final SpriteBatch batch;
     private final Viewport viewport;
     private final Texture bg;
+    private final FPSLogger fpsLogger;
 
     GameScreen(final SpriteBatch batch) {
         this.world = ServiceLocator.getService(IWorld.class);
@@ -38,6 +40,7 @@ public class GameScreen implements Screen {
         this.viewport = new FitViewport(IWorld.WIDTH, IWorld.HEIGHT);
         this.batch = batch;
         this.bg = new Texture("bg5.jpg");
+        this.fpsLogger = new FPSLogger();
     }
 
     @Override
@@ -59,6 +62,7 @@ public class GameScreen implements Screen {
         // Update processors
         ServiceLocator.getServices(IProcessor.class).forEach(p -> p.process(dt));
 
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -79,6 +83,7 @@ public class GameScreen implements Screen {
             );
         });
         batch.end();
+        fpsLogger.log();
     }
 
     @Override

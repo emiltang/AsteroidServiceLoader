@@ -7,39 +7,30 @@
  */
 package com.mycompany.player;
 
-import com.mycompany.api.IEntity;
-import com.mycompany.api.IMoveAble;
+import com.mycompany.api.*;
 
 /**
  * @author Emil
  */
-public class Player implements IMoveAble, IEntity {
+public class Player implements IMoveAble, IEntity, ICollideAble {
 
     private final String asset;
-    private final float acceleration;
-    private final float deceleration;
-    private final float maxSpeed;
-    private final float rotationSpeed;
+    private final IMoveAbility moveAbility;
+    private final ICollisionAbility collisionAbility;
 
     private float x;
     private float y;
-    private float dx;
-    private float dy;
     private float rotation;
-    private boolean turnLeft;
-    private boolean turnRight;
-    private boolean moveForward;
+    private int healthPoints;
 
     Player(final String asset,
-           final float acceleration,
-           final float deceleration,
-           final float maxSpeed,
-           final float rotationSpeed) {
+           final int healthPoints,
+           IMoveAbility moveAbility,
+           ICollisionAbility collisionAbility) {
         this.asset = asset;
-        this.acceleration = acceleration;
-        this.deceleration = deceleration;
-        this.maxSpeed = maxSpeed;
-        this.rotationSpeed = rotationSpeed;
+        this.healthPoints = healthPoints;
+        this.moveAbility = moveAbility;
+        this.collisionAbility = collisionAbility;
     }
 
     @Override
@@ -68,26 +59,6 @@ public class Player implements IMoveAble, IEntity {
     }
 
     @Override
-    public boolean isTurnLeft() {
-        return turnLeft;
-    }
-
-    @Override
-    public void setTurnLeft(boolean turnLeft) {
-        this.turnLeft = turnLeft;
-    }
-
-    @Override
-    public boolean isTurnRight() {
-        return turnRight;
-    }
-
-    @Override
-    public void setTurnRight(boolean turnRight) {
-        this.turnRight = turnRight;
-    }
-
-    @Override
     public float getRotation() {
         return rotation;
     }
@@ -97,53 +68,21 @@ public class Player implements IMoveAble, IEntity {
         this.rotation = rotation;
     }
 
-    @Override
-    public boolean isMoveForward() {
-        return moveForward;
+    int getHealthPoints() {
+        return healthPoints;
+    }
+
+    void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     @Override
-    public void setMoveForward(boolean moveForward) {
-        this.moveForward = moveForward;
+    public IMoveAbility getMoveAbility() {
+        return moveAbility;
     }
 
     @Override
-    public float getAcceleration() {
-        return acceleration;
-    }
-
-    @Override
-    public float getDx() {
-        return dx;
-    }
-
-    @Override
-    public void setDx(float dx) {
-        this.dx = dx;
-    }
-
-    @Override
-    public float getDy() {
-        return dy;
-    }
-
-    @Override
-    public void setDy(float dy) {
-        this.dy = dy;
-    }
-
-    @Override
-    public float getDeceleration() {
-        return deceleration;
-    }
-
-    @Override
-    public float getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    @Override
-    public float getRotationSpeed() {
-        return rotationSpeed;
+    public ICollisionAbility getCollisionAbility() {
+        return collisionAbility;
     }
 }

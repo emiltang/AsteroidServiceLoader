@@ -5,29 +5,32 @@
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
-package com.mycompany.enemy;
 
 import com.mycompany.api.ICollideAble;
+import com.mycompany.api.ICollisionAbility;
+import com.mycompany.api.IMoveAbility;
 import com.mycompany.api.IMoveAble;
-import com.mycompany.library.CollisionAbility;
-import com.mycompany.library.MoveAbility;
 
-public class Enemy implements IMoveAble, ICollideAble {
+public class Projectile implements ICollideAble, IMoveAble {
 
-    private final MoveAbility moveAbility;
-    private final CollisionAbility collisionAbility;
     private final String asset;
-
+    private final ICollisionAbility collisionAbility;
+    private final IMoveAbility moveAbility;
     private float x;
     private float y;
     private float rotation;
 
-    Enemy(final String asset,
-          MoveAbility moveAbility,
-          CollisionAbility collisionAbility) {
-        this.moveAbility = moveAbility;
-        this.collisionAbility = collisionAbility;
+    Projectile(final String asset,
+               IMoveAbility moveAbility,
+               ICollisionAbility collisionAbility) {
         this.asset = asset;
+        this.collisionAbility = collisionAbility;
+        this.moveAbility = moveAbility;
+    }
+
+    @Override
+    public String getAsset() {
+        return asset;
     }
 
     @Override
@@ -61,17 +64,12 @@ public class Enemy implements IMoveAble, ICollideAble {
     }
 
     @Override
-    public String getAsset() {
-        return asset;
-    }
-
-    @Override
-    public CollisionAbility getCollisionAbility() {
+    public ICollisionAbility getCollisionAbility() {
         return collisionAbility;
     }
 
     @Override
-    public MoveAbility getMoveAbility() {
+    public IMoveAbility getMoveAbility() {
         return moveAbility;
     }
 }

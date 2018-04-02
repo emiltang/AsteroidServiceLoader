@@ -11,6 +11,8 @@ import com.mycompany.api.IAssetManager;
 import com.mycompany.api.IPlugin;
 import com.mycompany.api.IWorld;
 import com.mycompany.api.ServiceLocator;
+import com.mycompany.library.CollisionAbility;
+import com.mycompany.library.MoveAbility;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.random;
@@ -23,6 +25,8 @@ public class EnemyPlugin implements IPlugin {
     private static final float DECELERATION = 5;
     private static final float MAX_SPEED = 200;
     private static final float ROTATION_SPEED = 5;
+    private static final int DAMAGE = 0;
+    private static final int HIT_RADIUS = 96;
 
     private final IAssetManager assetManager;
     private final IWorld world;
@@ -37,14 +41,12 @@ public class EnemyPlugin implements IPlugin {
         assetManager.loadAsset(ASSET_KEY, ASSET_PATH);
         var enemy = new Enemy(
                 ASSET_KEY,
-                ACCELERATION,
-                DECELERATION,
-                MAX_SPEED,
-                ROTATION_SPEED
+                new MoveAbility(ACCELERATION, DECELERATION, MAX_SPEED, ROTATION_SPEED),
+                new CollisionAbility(DAMAGE, HIT_RADIUS)
         );
         enemy.setX((float) (random() * IWorld.WIDTH));
         enemy.setY((float) (random() * IWorld.HEIGHT));
-        enemy.setMoveForward(true);
+        enemy.getMoveAbility().setMoveForward(true);
         enemy.setRotation((float) (random() * 2 * PI));
         world.addEntity(enemy);
     }

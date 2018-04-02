@@ -45,4 +45,6 @@ public interface IWorld {
      * @param <E>      Type of entity
      */
     <E extends IEntity> void removeEntities(List<E> entities);
+
+    void removeEntity(IEntity entity);
 }

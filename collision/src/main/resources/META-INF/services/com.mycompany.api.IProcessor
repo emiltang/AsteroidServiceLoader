@@ -14,4 +14,4 @@
 # Vestibulum commodo. Ut rhoncus gravida arcu.
 #
 
-com.mycompany.core.AssetManager
+com.mycompany.collision.CollisionProcessor

@@ -29,10 +29,16 @@ public class PlayerProcessor implements IProcessor {
 
     @Override
     public void process(float dt) {
-        for (var player : world.getEntities(Player.class)) {
-            player.setMoveForward(inputService.keyDown(Key.UP));
-            player.setTurnLeft(inputService.keyDown(Key.LEFT));
-            player.setTurnRight(inputService.keyDown(Key.RIGHT));
+        for (var p : world.getEntities(Player.class)) {
+            p.getMoveAbility().setMoveForward(inputService.keyDown(Key.UP));
+            p.getMoveAbility().setTurnLeft(inputService.keyDown(Key.LEFT));
+            p.getMoveAbility().setTurnRight(inputService.keyDown(Key.RIGHT));
+
+            p.getCollisionAbility().getCollisions().forEach(c -> p.setHealthPoints(
+                    p.getHealthPoints() - c.getCollisionAbility().getDamage()));
+            if (p.getHealthPoints() <= 0) {
+                world.removeEntity(p);
+            }
         }
     }
 }

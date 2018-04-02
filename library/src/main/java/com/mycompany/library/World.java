@@ -44,4 +44,9 @@ public class World implements IWorld {
     public <E extends IEntity> void removeEntities(List<E> entities) {
         ENTITIES.removeAll(entities);
     }
+
+    @Override
+    public void removeEntity(IEntity entity) {
+        ENTITIES.remove(entity);
+    }
 }

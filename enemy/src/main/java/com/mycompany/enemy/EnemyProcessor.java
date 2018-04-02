@@ -11,7 +11,7 @@ import com.mycompany.api.IProcessor;
 
 public class EnemyProcessor implements IProcessor {
     @Override
-    public void process(float dt) {
+    public void process(float deltaTime) {
 
     }
 }

@@ -7,55 +7,30 @@
  */
 package com.mycompany.asteroid;
 
+import com.mycompany.api.ICollideAble;
+import com.mycompany.api.ICollisionAbility;
+import com.mycompany.api.IMoveAbility;
 import com.mycompany.api.IMoveAble;
 
-public class Asteroid implements IMoveAble {
+/**
+ * @author emil
+ */
+public class Asteroid implements IMoveAble, ICollideAble {
 
     private final String asset;
-    private final float acceleration;
-    private final float deceleration;
-    private final float maxSpeed;
-    private final float rotationSpeed;
-
+    private final ICollisionAbility collisionAbility;
+    private final IMoveAbility moveAbility;
     private float x;
     private float y;
-    private float dx;
-    private float dy;
     private float rotation;
-    private boolean turnLeft;
-    private boolean turnRight;
-    private boolean moveForward;
+
 
     Asteroid(final String asset,
-             final float acceleration,
-             final float deceleration,
-             final float maxSpeed,
-             final float rotationSpeed) {
+             IMoveAbility moveAbility,
+             ICollisionAbility collisionAbility) {
         this.asset = asset;
-        this.acceleration = acceleration;
-        this.deceleration = deceleration;
-        this.maxSpeed = maxSpeed;
-        this.rotationSpeed = rotationSpeed;
-    }
-
-    @Override
-    public float getRotationSpeed() {
-        return rotationSpeed;
-    }
-
-    @Override
-    public float getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    @Override
-    public float getDeceleration() {
-        return deceleration;
-    }
-
-    @Override
-    public float getAcceleration() {
-        return acceleration;
+        this.collisionAbility = collisionAbility;
+        this.moveAbility = moveAbility;
     }
 
     @Override
@@ -84,26 +59,6 @@ public class Asteroid implements IMoveAble {
     }
 
     @Override
-    public float getDx() {
-        return dx;
-    }
-
-    @Override
-    public void setDx(float dx) {
-        this.dx = dx;
-    }
-
-    @Override
-    public float getDy() {
-        return dy;
-    }
-
-    @Override
-    public void setDy(float dy) {
-        this.dy = dy;
-    }
-
-    @Override
     public float getRotation() {
         return rotation;
     }
@@ -114,32 +69,12 @@ public class Asteroid implements IMoveAble {
     }
 
     @Override
-    public boolean isTurnLeft() {
-        return turnLeft;
+    public ICollisionAbility getCollisionAbility() {
+        return collisionAbility;
     }
 
     @Override
-    public void setTurnLeft(boolean turnLeft) {
-        this.turnLeft = turnLeft;
-    }
-
-    @Override
-    public boolean isTurnRight() {
-        return turnRight;
-    }
-
-    @Override
-    public void setTurnRight(boolean turnRight) {
-        this.turnRight = turnRight;
-    }
-
-    @Override
-    public boolean isMoveForward() {
-        return moveForward;
-    }
-
-    @Override
-    public void setMoveForward(boolean moveForward) {
-        this.moveForward = moveForward;
+    public IMoveAbility getMoveAbility() {
+        return moveAbility;
     }
 }
