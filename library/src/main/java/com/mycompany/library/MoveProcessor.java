@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2018. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package com.mycompany.library;
 
 import com.mycompany.api.IMoveAble;
@@ -24,28 +32,28 @@ public class MoveProcessor implements IProcessor {
 
             // TL;DR: stuff moves
 
-            if (m.getTurnLeft()) m.setRotation(m.getRotation() + m.getRotationSpeed() * dt);
-            if (m.getTurnRight()) m.setRotation(m.getRotation() - m.getRotationSpeed() * dt);
+            if (m.isTurnLeft()) m.setRotation(m.getRotation() + m.getRotationSpeed() * dt);
+            if (m.isTurnRight()) m.setRotation(m.getRotation() - m.getRotationSpeed() * dt);
 
-            if (m.getMoveForward()) {
-                m.setDX((float) (m.getDX() + cos(m.getRotation()) * m.getAcceleration() * dt));
-                m.setDY((float) (m.getDY() + sin(m.getRotation()) * m.getAcceleration() * dt));
+            if (m.isMoveForward()) {
+                m.setDx((float) (m.getDx() + cos(m.getRotation()) * m.getAcceleration() * dt));
+                m.setDy((float) (m.getDy() + sin(m.getRotation()) * m.getAcceleration() * dt));
             }
-            float vec = (float) sqrt(m.getDX() * m.getDX() + m.getDY() * m.getDY());
+            float vec = (float) sqrt(m.getDx() * m.getDx() + m.getDy() * m.getDy());
             if (vec > 0) {
-                m.setDX(m.getDX() - (m.getDX() / vec) * m.getDeceleration() * dt);
-                m.setDY(m.getDY() - (m.getDY() / vec) * m.getDeceleration() * dt);
+                m.setDx(m.getDx() - (m.getDx() / vec) * m.getDeceleration() * dt);
+                m.setDy(m.getDy() - (m.getDy() / vec) * m.getDeceleration() * dt);
             }
             if (vec > m.getMaxSpeed()) {
-                m.setDX((m.getDX() / vec) * m.getMaxSpeed());
-                m.setDY((m.getDY() / vec) * m.getMaxSpeed());
+                m.setDx((m.getDx() / vec) * m.getMaxSpeed());
+                m.setDy((m.getDy() / vec) * m.getMaxSpeed());
             }
 
-            m.setX(m.getX() + m.getDX() * dt);
+            m.setX(m.getX() + m.getDx() * dt);
             if (m.getX() > IWorld.WIDTH) m.setX(0);
             else if (m.getX() < 0) m.setX(IWorld.WIDTH);
 
-            m.setY(m.getY() + m.getDY() * dt);
+            m.setY(m.getY() + m.getDy() * dt);
             if (m.getY() > IWorld.HEIGHT) m.setY(0);
             else if (m.getY() < 0) m.setY(IWorld.HEIGHT);
         }

@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2018. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package com.mycompany.core;
 
 import com.badlogic.gdx.Gdx;
@@ -7,7 +15,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mycompany.api.*;
+import com.mycompany.api.IPlugin;
+import com.mycompany.api.IProcessor;
+import com.mycompany.api.IWorld;
+import com.mycompany.api.ServiceLocator;
 
 import static com.badlogic.gdx.math.MathUtils.radDeg;
 
@@ -40,34 +51,12 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void resize(int x, int y) {
+    public void resize(final int x, final int y) {
         viewport.update(x, y, true);
     }
 
-
-    private void drawEntity(IEntity e) {
-        Texture texture = assetManager.getAsset(e.getAsset());
-        batch.draw(
-                texture, //The texture to use
-                e.getX() - texture.getWidth() / 2, //Position x to draw
-                e.getY() - texture.getHeight() / 2, //Position y to draw
-                texture.getWidth() / 2,
-                texture.getHeight() / 2,
-                texture.getWidth(),
-                texture.getHeight(),
-                1,
-                1,
-                e.getRotation() * radDeg,
-                0, 0,
-                texture.getWidth(),
-                texture.getHeight(),
-                false,
-                false
-        );
-    }
-
     @Override
-    public void render(float dt) {
+    public void render(final float dt) {
         // Update processors
         ServiceLocator.getServices(IProcessor.class).forEach(p -> p.process(dt));
 
@@ -76,7 +65,20 @@ public class GameScreen implements Screen {
 
         batch.begin();
         batch.draw(bg, 0, 0, IWorld.WIDTH, IWorld.HEIGHT);
-        world.getEntities().forEach(this::drawEntity);
+        world.getEntities().forEach(e -> {
+            Texture t = assetManager.getAsset(e.getAsset());
+            batch.draw(
+                    t,
+                    e.getX() - t.getWidth() / 2, e.getY() - t.getHeight() / 2,
+                    t.getWidth() / 2, t.getHeight() / 2,
+                    t.getWidth(), t.getHeight(),
+                    1, 1,
+                    e.getRotation() * radDeg,
+                    0, 0,
+                    t.getWidth(), t.getHeight(),
+                    false, false
+            );
+        });
         batch.end();
     }
 

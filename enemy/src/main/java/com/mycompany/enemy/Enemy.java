@@ -6,19 +6,11 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.player;
+package com.mycompany.enemy;
 
 import com.mycompany.api.IMoveAble;
 
-/**
- * @author Emil
- */
-public class Player implements IMoveAble {
+public class Enemy implements IMoveAble {
 
     private final String asset;
     private final float acceleration;
@@ -35,11 +27,11 @@ public class Player implements IMoveAble {
     private boolean turnRight;
     private boolean moveForward;
 
-    Player(final String asset,
-           final float acceleration,
-           final float deceleration,
-           final float maxSpeed,
-           final float rotationSpeed) {
+    Enemy(final String asset,
+          final float acceleration,
+          final float deceleration,
+          final float maxSpeed,
+          final float rotationSpeed) {
         this.asset = asset;
         this.acceleration = acceleration;
         this.deceleration = deceleration;
@@ -48,8 +40,18 @@ public class Player implements IMoveAble {
     }
 
     @Override
-    public String getAsset() {
-        return asset;
+    public float getDeceleration() {
+        return deceleration;
+    }
+
+    @Override
+    public float getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    @Override
+    public float getRotationSpeed() {
+        return rotationSpeed;
     }
 
     @Override
@@ -73,51 +75,6 @@ public class Player implements IMoveAble {
     }
 
     @Override
-    public boolean isTurnLeft() {
-        return turnLeft;
-    }
-
-    @Override
-    public void setTurnLeft(boolean turnLeft) {
-        this.turnLeft = turnLeft;
-    }
-
-    @Override
-    public boolean isTurnRight() {
-        return turnRight;
-    }
-
-    @Override
-    public void setTurnRight(boolean turnRight) {
-        this.turnRight = turnRight;
-    }
-
-    @Override
-    public float getRotation() {
-        return rotation;
-    }
-
-    @Override
-    public void setRotation(float rotation) {
-        this.rotation = rotation;
-    }
-
-    @Override
-    public boolean isMoveForward() {
-        return moveForward;
-    }
-
-    @Override
-    public void setMoveForward(boolean moveForward) {
-        this.moveForward = moveForward;
-    }
-
-    @Override
-    public float getAcceleration() {
-        return acceleration;
-    }
-
-    @Override
     public float getDx() {
         return dx;
     }
@@ -138,17 +95,52 @@ public class Player implements IMoveAble {
     }
 
     @Override
-    public float getDeceleration() {
-        return deceleration;
+    public float getRotation() {
+        return rotation;
     }
 
     @Override
-    public float getMaxSpeed() {
-        return maxSpeed;
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
     }
 
     @Override
-    public float getRotationSpeed() {
-        return rotationSpeed;
+    public boolean isTurnLeft() {
+        return turnLeft;
+    }
+
+    @Override
+    public void setTurnLeft(boolean turnLeft) {
+        this.turnLeft = turnLeft;
+    }
+
+    @Override
+    public boolean isTurnRight() {
+        return turnRight;
+    }
+
+    @Override
+    public void setTurnRight(boolean turnRight) {
+        this.turnRight = turnRight;
+    }
+
+    @Override
+    public boolean isMoveForward() {
+        return moveForward;
+    }
+
+    @Override
+    public void setMoveForward(boolean moveForward) {
+        this.moveForward = moveForward;
+    }
+
+    @Override
+    public String getAsset() {
+        return asset;
+    }
+
+    @Override
+    public float getAcceleration() {
+        return acceleration;
     }
 }

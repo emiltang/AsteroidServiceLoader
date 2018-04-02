@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2018. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package com.mycompany.api;
 
 /**
@@ -5,27 +13,27 @@ package com.mycompany.api;
  */
 public interface IMoveAble extends IEntity {
 
-    boolean getTurnLeft();
+    boolean isTurnLeft();
 
     void setTurnLeft(boolean b);
 
-    boolean getTurnRight();
+    boolean isTurnRight();
 
     void setTurnRight(boolean b);
 
-    boolean getMoveForward();
+    boolean isMoveForward();
 
     void setMoveForward(boolean b);
 
     float getAcceleration();
 
-    float getDX();
+    float getDx();
 
-    void setDX(float dx);
+    void setDx(float dx);
 
-    float getDY();
+    float getDy();
 
-    void setDY(float dy);
+    void setDy(float dy);
 
     float getDeceleration();
 
