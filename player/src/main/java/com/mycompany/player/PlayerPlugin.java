@@ -5,18 +5,14 @@
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.player;
 
 import com.mycompany.api.IAssetManager;
 import com.mycompany.api.IPlugin;
 import com.mycompany.api.IWorld;
 import com.mycompany.api.ServiceLocator;
+
+import java.util.List;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.random;
@@ -54,7 +50,7 @@ public class PlayerPlugin implements IPlugin {
     @Override
     public void stop() {
         assetManager.unloadAsset(ASSET_KEY);
-        var entities = world.getEntities(Player.class);
+        List<Player> entities = world.getEntities(Player.class);
         world.removeEntities(entities);
     }
 }

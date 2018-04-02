@@ -5,20 +5,15 @@
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.player;
 
+import com.mycompany.api.IEntity;
 import com.mycompany.api.IMoveAble;
 
 /**
  * @author Emil
  */
-public class Player implements IMoveAble {
+public class Player implements IMoveAble, IEntity {
 
     private final String asset;
     private final float acceleration;

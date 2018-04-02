@@ -5,7 +5,6 @@
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
-
 package com.mycompany.core;
 
 import com.badlogic.gdx.Gdx;
@@ -96,6 +95,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
+        ServiceLocator.getServices(IPlugin.class).forEach(IPlugin::stop);
         bg.dispose();
         assetManager.dispose();
     }
